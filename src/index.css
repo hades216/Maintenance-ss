@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --kf-navy: #0B1E38;
+    --kf-navy-deep: #071426;
+    --kf-blue: #1D6FF2;
+    --kf-blue-hover: #1558C7;
+    --kf-cyan: #0EA5E9;
+    --kf-teal: #0D9488;
+    --kf-amber: #EA580C;
+    --kf-grey: #F4F5F7;
+    --kf-charcoal: #1E2430;
+    --kf-muted: #5A6475;
+    --kf-green: #15803D;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  .font-mono-num {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Enhanced Animated Gradient Buttons */
+@layer components {
+  .btn-animated {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      background-position 360ms ease,
+      border-color 200ms ease,
+      color 200ms ease;
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+  }
+
+  .btn-animated::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 45%;
+    background: linear-gradient(
+      110deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 100%
+    );
+    transform: translateX(-160%) skewX(-18deg);
+    transition: transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .btn-animated:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background-position: 100% 50%;
+  }
+
+  .btn-animated:hover:not(:disabled)::after {
+    transform: translateX(340%) skewX(-18deg);
+  }
+
+  .btn-animated:active:not(:disabled) {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .btn-grad-primary {
+    background-image: linear-gradient(120deg, #1D6FF2 0%, #0EA5E9 50%, #0D9488 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 22px -6px rgba(29, 111, 242, 0.48);
+  }
+
+  .btn-grad-primary:hover:not(:disabled) {
+    box-shadow: 0 14px 28px -6px rgba(14, 165, 233, 0.52);
+  }
+
+  .btn-grad-emerald {
+    background-image: linear-gradient(120deg, #15803D 0%, #059669 50%, #0D9488 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 20px -6px rgba(21, 128, 61, 0.45);
+  }
+
+  .btn-grad-emerald:hover:not(:disabled) {
+    box-shadow: 0 14px 26px -6px rgba(16, 185, 129, 0.5);
+  }
+
+  .btn-grad-warm {
+    background-image: linear-gradient(120deg, #D97706 0%, #EA580C 55%, #DC2626 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 20px -6px rgba(234, 88, 12, 0.45);
+  }
+
+  .btn-grad-warm:hover:not(:disabled) {
+    box-shadow: 0 14px 26px -6px rgba(234, 88, 12, 0.52);
+  }
+
+  .btn-grad-dark {
+    background-image: linear-gradient(120deg, #0B1E38 0%, #1E3A8A 55%, #0F766E 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 20px -6px rgba(11, 30, 56, 0.45);
+  }
+
+  .btn-grad-dark:hover:not(:disabled) {
+    box-shadow: 0 14px 26px -6px rgba(30, 58, 138, 0.45);
+  }
+
+  .btn-grad-light {
+    background-image: linear-gradient(120deg, #ffffff 0%, #f0f9ff 55%, #fef3c7 100%);
+    color: #0B1E38;
+    box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.18);
+  }
+
+  .btn-grad-light:hover:not(:disabled) {
+    box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.24);
+  }
+
+  .btn-grad-glass {
+    background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.14) 0%, rgba(14, 165, 233, 0.22) 50%, rgba(245, 158, 11, 0.18) 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    backdrop-filter: blur(8px);
+  }
+
+  .btn-grad-glass:hover:not(:disabled) {
+    border-color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-animated,
+  .btn-animated::after {
+    transition: none !important;
+    transform: none !important;
+  }
+}
